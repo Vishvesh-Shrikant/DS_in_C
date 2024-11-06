@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include<malloc.h>
+#include<malloc.h>  
 
 struct Node{
   int data;
@@ -92,6 +92,22 @@ void inserAfter(int val, int key)
       nn->next=ptr;
   }
 }
+
+float average()
+{
+  struct Node *ptr;
+  int counter=0;
+  float sum=0;
+  ptr=start;
+  while(ptr!=NULL)
+    {
+      counter++;
+      sum+=ptr->data;
+      ptr=ptr->next;
+    }
+  return sum/counter;
+}
+
 void reversed()
 {
   struct Node *ptr, *prev, *next;
@@ -110,7 +126,8 @@ void reversed()
   }
   start=prev;
 }
-void deleteNode(int val)
+
+void deleteNode(int val)  
 {
     struct Node *ptr, *prev, *temp;
     if(start==NULL)
