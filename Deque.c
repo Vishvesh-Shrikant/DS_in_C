@@ -4,6 +4,8 @@
 
 int queue[max], front=-1, rear=-1;
 
+// FRONT= LEFT , REAR = RIGHT
+
 void display()
 {
     int i=front;
