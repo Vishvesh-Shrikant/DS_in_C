@@ -115,8 +115,8 @@ void inorder(struct Node *root) {
 }
 void postorder(struct Node *root) {
   if (root) {
-    inorder(root->left);
-    inorder(root->right);
+    postorder(root->left);
+    postorder(root->right);
     printf("%d\t", root->data);
   }
 }
