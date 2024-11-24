@@ -15,17 +15,15 @@ void create(int val)
   {
     nn->next=NULL;
     start=nn;
+    return;
   }
-  else
+  ptr=start;
+  while(ptr->next!=NULL)
   {
-    ptr=start;
-    while(ptr->next!=NULL)
-    {
-      ptr=ptr->next;
-    }
-    nn->next=NULL;
-    ptr->next=nn;
+    ptr=ptr->next;
   }
+  nn->next=NULL;
+  ptr->next=nn;
 }
 
 void insertBefore(int val, int key)
@@ -45,52 +43,46 @@ void insertBefore(int val, int key)
     {
       nn->next=ptr;
       start=nn;
+      return;
     }
-    else
+    while(ptr->next!=NULL && ptr->data !=key)
     {
-      while(ptr->next!=NULL && ptr->data !=key)
-        {
-          prev=ptr;
-          ptr=ptr->next;
-        }
-      if(ptr==NULL)
-      {
-        printf("\nKey not found\n");
-        return;
-      }
-      prev->next=nn;
-      nn->next=ptr;
+      prev=ptr;
+      ptr=ptr->next;
     }
+    if(ptr==NULL)
+    {
+      printf("\nKey not found\n");
+      return;
+    }
+    prev->next=nn;
+    nn->next=ptr;
   }
 }
 
 void inserAfter(int val, int key)
 {
-  struct Node *nn, *ptr, *prev;
+  struct Node *nn, *ptr;
   nn= (struct Node*)malloc(sizeof(struct Node));
   nn->data=val;
   if(start->data==NULL)
-    {
-      nn->next=NULL;
-      start=nn;
-    }
-    else 
-    {
-      ptr=start;
-      prev=ptr;
-      while(prev->data!=key)
-      {
-        prev=ptr;
-        ptr=ptr->next;
-      }
-      if(prev==NULL)
-        {
-          printf("\nKey not found\n");
-          return;
-        }
-      prev->next=nn;
-      nn->next=ptr;
+  {
+    nn->next=NULL;
+    start=nn;
+    return;
   }
+  ptr=start;
+  while(ptr!=NULL && ptr->data!=val )
+  {
+    ptr=ptr->next;
+  }
+  if(ptr==NULL)
+  {
+    printf("\nKEY NOT FOUND\n");
+    return;
+  }
+  nn->next=ptr->next;
+  ptr->next=nn;
 }
 
 float average()
@@ -129,35 +121,30 @@ void reversed()
 
 void deleteNode(int val)  
 {
-    struct Node *ptr, *prev, *temp;
+    struct Node *ptr, *prev;
     if(start==NULL)
     {
       printf("\nList is empty\n");
       return;
     }
     ptr=start, prev=NULL;
+    if(ptr->data==val)
+    {
+        start=start->next;
+        free(ptr);
+    }
     while(ptr!=NULL && ptr->data!=val)
       {
         prev=ptr;
         ptr=ptr->next;
       }
-    if(ptr!=NULL)
-    {
-      if(ptr==start)
-      {
-        start=start->next;
-        free(ptr);
-      }
-      else
-      {
-        prev->next=ptr->next;
-        free(ptr);
-      }
-    }
-  else
+    if(ptr==NULL)
     {
       printf("\nValue not found\n");
+      return;
     }
+    prev->next=ptr->next;
+    free(ptr);
 }
 
 void display()
