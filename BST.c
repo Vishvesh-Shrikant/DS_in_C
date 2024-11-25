@@ -51,7 +51,7 @@ struct Node *searchElement(struct Node *root, int val) {
     else if(val > ptr->data)
       ptr=ptr->right;
     else 
-      return ptr
+      return ptr;
   }
   return NULL;
 }
