@@ -39,13 +39,20 @@ struct Node *insertElement(struct Node *root, int n) {
 // serach node
 struct Node *searchElement(struct Node *root, int n) {
   struct Node *ptr = root;
-  if (ptr->data == n)
-    return ptr;
-  else if (n < ptr->data)
-    return searchElement(ptr->left, n);
-  else if (n > ptr->data)
-    return searchElement(ptr->right, n);
-
+  if(ptr==NULL)
+  {
+    printf("tree is empty!\n");
+    return;
+  }
+  while(ptr!=NULL)
+  {
+    if(val < ptr->data)
+      ptr=ptr->left;
+    else if(val > ptr->data)
+      ptr=ptr->right;
+    else 
+      return ptr
+  }
   return NULL;
 }
 
@@ -123,15 +130,25 @@ void postorder(struct Node *root) {
 
 // smallest node
 struct Node *smallestNode(struct Node *root) {
-  if (root == NULL || root->right == NULL)
+  struct Node *ptr=root;
+  if (root == NULL)
     return root;
-  return smallestNode(root->right);
+  while(ptr->left != NULL)
+  {
+        ptr=ptr->left;
+  }
+  return ptr;
 }
 // largest node
 struct Node *largestNode(struct Node *root) {
-  if (root == NULL || root->left == NULL)
+  struct Node *ptr=root;
+  if (root == NULL)
     return root;
-  return largestNode(root->left);
+  while(ptr->right != NULL)
+  {
+        ptr=ptr->right;
+  }
+  return ptr;
 }
 
 //total nodes in tree
