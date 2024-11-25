@@ -42,7 +42,7 @@ struct Node *searchElement(struct Node *root, int val) {
   if(ptr==NULL)
   {
     printf("tree is empty!\n");
-    return;
+    return NULL;
   }
   while(ptr!=NULL)
   {
