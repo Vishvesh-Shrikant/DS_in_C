@@ -37,7 +37,7 @@ struct Node *insertElement(struct Node *root, int n) {
 }
 
 // serach node
-struct Node *searchElement(struct Node *root, int n) {
+struct Node *searchElement(struct Node *root, int val) {
   struct Node *ptr = root;
   if(ptr==NULL)
   {
