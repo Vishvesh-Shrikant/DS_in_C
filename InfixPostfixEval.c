@@ -1,4 +1,4 @@
-#include <stdio.h>
+ #include <stdio.h>
 #include <math.h>
 #define max 100
 char stack[max], top=-1, top2=-1;
